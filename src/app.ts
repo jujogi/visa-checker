@@ -3,19 +3,18 @@ import delay from "./utils/delay";
 import { getAppointments } from "./managers/appointment.manager";
 
 const Logger = createLogger("EventTrigger");
+const CURRENT_SELECTED_DATE = new Date('2024-02-14');
 
 const checkDates = async (dates: any[]) => {
     dates.forEach(date => {
         const newDate = new Date(date.date);
-        const dateYear = newDate.getFullYear();
         
-        if (dateYear < 2024) {
+        if (newDate < CURRENT_SELECTED_DATE) {
             Logger.log(`🚨 🚨 🚨  Appointments available: ${date.date}  🚨 🚨 🚨`);
-            Logger.log(`📆  Month ${newDate.getMonth()}`);
         }
     });
 
-    Logger.warn("Looking for new appointments...");
+    Logger.warn("Not maches. Looking for new appointments...");
     await delay(getDates, 15000);
 
 }
@@ -23,9 +22,7 @@ const checkDates = async (dates: any[]) => {
 const getDates = async () => {
     try {
         const dates = await getAppointments();
-
         Logger.log(`${dates.length} appointment availables...`);
-        Logger.info(dates);
         checkDates(dates);
     } catch(e: any) {
         Logger.error(`${e.message}: ${e.code}`);
