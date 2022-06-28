@@ -3,7 +3,7 @@ import delay from "./utils/delay";
 import { getAppointments } from "./managers/appointment.manager";
 
 const Logger = createLogger("EventTrigger");
-const CURRENT_SELECTED_DATE = new Date('2024-02-14');
+const CURRENT_SELECTED_DATE = new Date('2023-01-11');
 
 const checkDates = async (dates: any[]) => {
     dates.forEach(date => {
@@ -15,8 +15,8 @@ const checkDates = async (dates: any[]) => {
     });
 
     Logger.warn("Not maches. Looking for new appointments...");
-    await delay(getDates, 15000);
-
+    const waitSeconds = (Math.random() * (10 - 5) + 5) * 1000;
+    await delay(getDates, Math.floor(waitSeconds));
 }
 
 const getDates = async () => {

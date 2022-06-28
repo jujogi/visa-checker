@@ -12,6 +12,7 @@
   "dependencies": {
     "@tsconfig/node14": "^1.0.3",
     "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
     "esm": "^3.2.25"
   },
   "devDependencies": {

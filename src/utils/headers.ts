@@ -1,4 +1,7 @@
-import {COOKIE, TOKEN } from "./env";
+import dotenv from "dotenv";
+dotenv.config();
+
+const { COOKIE, TOKEN } = process.env;
 
 export default {
     'Accept': 'application/json, text/javascript, */*; q=0.01',

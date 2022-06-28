@@ -10,7 +10,7 @@ let counter = 0;
 
 const getAppointments = async () => {
     counter += 1;
-    
+        
     if (counter > MAX_COUNTER) {
         throw {
             message: 'Try it again in a few minutes',
